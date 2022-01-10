@@ -1,4 +1,4 @@
-FROM golang:1.16-buster AS build
+FROM golang:alpine3.15 AS build
 
 WORKDIR /app
 
@@ -8,12 +8,10 @@ COPY *.go ./
 
 RUN go build -o /printenv
 
-FROM gcr.io/distroless/base-debian10
+FROM alpine:3.15.0
 
 WORKDIR /
 
 COPY --from=build /printenv /printenv
-
-USER nonroot:nonroot
 
 CMD ["/printenv"]

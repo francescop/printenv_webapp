@@ -3,7 +3,7 @@ version: '3'
 
 services:
   app:
-    image: printenv:latest
+    image: francescopalazzini/printenv_webapp:latest
     build:
       context: .
 
